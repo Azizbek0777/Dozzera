@@ -1,12 +1,9 @@
-import 'package:dozzer/main.dart';
 import 'package:dozzer/screens/technique_info_screen/widget/check_button.dart';
 import 'package:dozzer/utils/style/colors.dart';
 import 'package:dozzer/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:svg_flutter/svg.dart';
 
 class CalculationOptionsBottomSheet extends StatefulWidget {
   const CalculationOptionsBottomSheet({super.key});
@@ -17,6 +14,7 @@ class CalculationOptionsBottomSheet extends StatefulWidget {
 
 class _CalculationOptionsBottomSheetState extends State<CalculationOptionsBottomSheet> {
   Duration duration = const Duration(hours: 1, minutes: 23);
+  int status = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -53,45 +51,66 @@ class _CalculationOptionsBottomSheetState extends State<CalculationOptionsBottom
                   ),
                   SizedBox(height: 20.h),
                   CheckButton(
-                    isCheck: false,
-                    onPressed: () {},
+                    isCheck: status == 0,
+                    onPressed: () {
+                      setState(() {
+                        status = 0;
+                      });
+                    },
                     label: "За вызов",
+                    isTime: false,
+                    isCall: status == 0,
                   ),
                   SizedBox(height: 5.h),
                   CheckButton(
-                    onPressed: () {},
-                    isCheck: false,
-                    label: "За вызов",
+                    onPressed: () {
+                      setState(() {
+                        status = 1;
+                      });
+                    },
+                    isCheck: status == 1,
+                    label: "За смену",
+                    isTime: status == 1,
+                    isCall: false,
                   ),
                   SizedBox(height: 5.h),
                   CheckButton(
-                    onPressed: () {},
-                    isCheck: true,
+                    onPressed: () {
+                      setState(() {
+                        status = 2;
+                      });
+                    },
+                    isCheck: status == 2,
                     label: "Почасовой",
+                    isTime: false,
+                    isCall: false,
                   ),
-                  Container(
-                    height: 216.h,
-                    padding: const EdgeInsets.only(top: 6.0),
-                    margin: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom,
-                    ),
-                    color: CupertinoColors.systemBackground.resolveFrom(context),
-                    child: SafeArea(
-                      top: false,
-                      child: CupertinoTimerPicker(
-                        mode: CupertinoTimerPickerMode.hm,
-                        initialTimerDuration: duration,
-                        onTimerDurationChanged: (Duration newDuration) {
-                          setState(() => duration = newDuration);
-                        },
+                  if (status == 2)
+                    Container(
+                      height: 216.h,
+                      padding: const EdgeInsets.only(top: 6.0),
+                      margin: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                      ),
+                      color: CupertinoColors.systemBackground.resolveFrom(context),
+                      child: SafeArea(
+                        top: false,
+                        child: CupertinoTimerPicker(
+                          mode: CupertinoTimerPickerMode.hm,
+                          initialTimerDuration: duration,
+                          onTimerDurationChanged: (Duration newDuration) {
+                            setState(() => duration = newDuration);
+                          },
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
           ),
-          CustomButton(onPressed: () {}, label: "Сохранить"),
+          CustomButton(onPressed: () {
+            Navigator.pop(context);
+          }, label: "Сохранить"),
           SizedBox(height: 10.h)
         ],
       ),

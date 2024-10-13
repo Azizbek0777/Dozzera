@@ -71,7 +71,7 @@ class OrdersWidget extends StatelessWidget {
               color: AppColors.white,
               borderRadius: BorderRadius.circular(10.r),
             ),
-            child: Center(
+            child: const Center(
               child: Icon(Icons.add,color: AppColors.c000000,),
             ),
           )

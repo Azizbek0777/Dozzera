@@ -4,8 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/style/colors.dart';
 
-class TabWidgets extends StatelessWidget {
+class TabWidgets extends StatefulWidget {
   const TabWidgets({super.key});
+
+  @override
+  State<TabWidgets> createState() => _TabWidgetsState();
+}
+
+class _TabWidgetsState extends State<TabWidgets> {
+  int status = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +27,24 @@ class TabWidgets extends StatelessWidget {
             TextButton(
               style: TextButton.styleFrom(
                   fixedSize: Size(126.w, 70.h),
-                  backgroundColor: i != 0 ? AppColors.white : AppColors.c000000,
+                  backgroundColor: i != status ? AppColors.white : AppColors.c000000,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.r),
                   )),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  status = i;
+                });
+              },
               child: Text(
-                "Аренда",
+                i == 0
+                    ? "Аренда"
+                    : i == 1
+                        ? "Услуги"
+                        : "Покупка",
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  color: i == 0 ? AppColors.white : AppColors.c000000,
-                ),
+                      color: i == status ? AppColors.white : AppColors.c000000,
+                    ),
               ),
             ),
         ],

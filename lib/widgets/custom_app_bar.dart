@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
       margin: EdgeInsets.only(bottom: isMarginAndBorder ?? false ? 0 : 5.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(isMarginAndBorder ?? false ?  0 : 10.r),
+            bottomRight: Radius.circular(isMarginAndBorder ?? false ? 0 : 10.r),
             bottomLeft: Radius.circular(isMarginAndBorder ?? false ? 0 : 10.r),
           ),
           color: AppColors.white),
@@ -40,11 +40,11 @@ class CustomAppBar extends StatelessWidget {
         children: [
           SizedBox(width: 10.w),
           leadingIcon != null
-              ? CircleAvatar(
-                  backgroundColor: AppColors.cf4f4f4,
-                  radius: 22.h,
-                  child: InkWell(
-                    onTap: onTapLeading,
+              ? InkWell(
+                  onTap: onTapLeading,
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.cf4f4f4,
+                    radius: 22.h,
                     child: SvgPicture.asset("assets/icons/svg/$leadingIcon.svg"),
                   ),
                 )
@@ -61,14 +61,15 @@ class CustomAppBar extends StatelessWidget {
             ),
           const Spacer(),
           actionIcon != null
-              ? CircleAvatar(
-                  backgroundColor: AppColors.cf4f4f4,
-                  radius: 22.h,
-                  child: InkWell(
-                    onTap: onTapAction,
+              ? InkWell(
+            onTap: onTapAction,
+
+                child: CircleAvatar(
+                    backgroundColor: AppColors.cf4f4f4,
+                    radius: 22.h,
                     child: SvgPicture.asset("assets/icons/svg/$actionIcon.svg"),
                   ),
-                )
+              )
               : CircleAvatar(
                   backgroundColor: AppColors.transparent,
                   radius: 22.h,

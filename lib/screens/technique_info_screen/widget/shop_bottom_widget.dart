@@ -1,4 +1,5 @@
 import 'package:dozzer/route/route_constants.dart';
+import 'package:dozzer/screens/technique_info_screen/widget/price_bottom_sheet.dart';
 import 'package:dozzer/utils/style/colors.dart';
 import 'package:dozzer/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,7 +38,16 @@ class ShopButtonWidget extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15.h),
-            CustomButton(onPressed: () {}, label: "Добавить в заказы"),
+            CustomButton(onPressed: () {
+              showModalBottomSheet(
+                barrierColor: Colors.black.withOpacity(0.5),
+                isScrollControlled: true,
+                backgroundColor: AppColors.transparent,
+                // barrierColor: AppColors.transparent,
+                context: context,
+                builder: (context) => const PriceBottomSheet(),
+              );
+            }, label: "Добавить в заказы"),
             SizedBox(height: 15.h),
           ],
         ));

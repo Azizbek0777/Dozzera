@@ -5,6 +5,8 @@ import 'package:dozzer/utils/style/colors.dart';
 import 'package:dozzer/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../route/route_constants.dart';
+
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({super.key});
 
@@ -35,7 +37,11 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                   itemBuilder: (context, index) {
                     return const OrdersWidget();
                   })),
-          const AddButtonWidget()
+          AddButtonWidget(
+            onPressed: () {
+              Navigator.pushNamed(context, RouteList.orderDetails);
+            },
+          )
         ],
       ),
       // bottomNavigationBar: const AddButtonWidget(),

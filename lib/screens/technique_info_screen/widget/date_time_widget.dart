@@ -1,3 +1,4 @@
+import 'package:dozzer/screens/technique_info_screen/widget/calendar_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,17 @@ class DateTimeWidget extends StatelessWidget {
                 side: BorderSide(width: 1.w, color: AppColors.cCECECE),
                 padding: EdgeInsets.only(right: 5.w, left: 10.w),
               ),
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  useRootNavigator: false,
+                  barrierColor: Colors.black.withOpacity(0.5),
+                  isScrollControlled: true,
+                  backgroundColor: AppColors.transparent,
+                  // barrierColor: AppColors.transparent,
+                  context: context,
+                  builder: (context) => const CalendarWidget(),
+                );
+              },
               child: SizedBox(
                 height: 56.h,
                 child: Row(
@@ -42,7 +53,11 @@ class DateTimeWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 17.sp),
                     ),
                     const Spacer(),
-                    Icon(Icons.arrow_forward_ios,color: AppColors.c161616,size: 15.sp,),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.c161616,
+                      size: 15.sp,
+                    ),
                   ],
                 ),
               ))

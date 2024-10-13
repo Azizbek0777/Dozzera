@@ -1,4 +1,5 @@
 import 'package:dozzer/route/route_constants.dart';
+import 'package:dozzer/screens/loading_screen/loading_screen.dart';
 import 'package:dozzer/screens/main_screen/main_screen.dart';
 import 'package:dozzer/screens/my_orders_screen/my_orders_screen.dart';
 import 'package:dozzer/screens/onboarding_screen/onboarding_screen.dart';
@@ -26,5 +27,7 @@ class Routes {
         RouteList.privacyPolicy: (context) => const PrivacyPolicyScreen(),
         RouteList.orderList: (context) => const OrderListScreen(),
         RouteList.orderStatus: (context) => OrderStatusScreen(orderNumber: setting.arguments as String),
+        RouteList.loading: (context) => const LoadingScreen(),
+
       };
 }

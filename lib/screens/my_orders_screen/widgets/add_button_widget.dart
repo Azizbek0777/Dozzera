@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddButtonWidget extends StatelessWidget {
-  const AddButtonWidget({super.key});
+  final VoidCallback onPressed;
+  const AddButtonWidget({super.key,required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +58,7 @@ class AddButtonWidget extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                   style: TextButton.styleFrom(fixedSize: Size(double.infinity, 56.h), backgroundColor: AppColors.c000000, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),
-                  onPressed: () {
-                    // Navigator.pushNamed(context, RouteList.orderDetails);
-                  },
+                  onPressed:onPressed,
                   child: Text(
                     "Добавить в заказы",
                     style: Theme.of(context).textTheme.displayMedium?.copyWith(fontSize: 17.sp),

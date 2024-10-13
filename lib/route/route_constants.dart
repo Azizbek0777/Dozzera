@@ -11,4 +11,5 @@ class RouteList {
   static const String privacyPolicy = '/privacyPolicy';
   static const String orderList = '/orderList';
   static const String orderStatus = '/orderStatus';
+  static const String loading = '/loading';
  }

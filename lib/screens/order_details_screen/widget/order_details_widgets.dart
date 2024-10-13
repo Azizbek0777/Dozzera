@@ -21,7 +21,7 @@ class OrderDetailsWidgets extends StatelessWidget {
             height: 70.h,
             width: 70.h,
             decoration: BoxDecoration(color: AppColors.cE8E8E8, borderRadius: BorderRadius.circular(10.r)),
-            child: const Icon(Icons.add_location_rounded),
+            child: const Icon(Icons.location_on_sharp),
           ),
           SizedBox(width: 10.w),
           Column(

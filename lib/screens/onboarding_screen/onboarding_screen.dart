@@ -64,7 +64,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   const Spacer(),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouteList.main);
+                    },
                     label: "Войти по Pro ID",
                   ),
                   SizedBox(height: 10.h),

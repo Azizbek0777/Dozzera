@@ -5,6 +5,8 @@ import 'package:dozzer/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../route/route_constants.dart';
+
 class OrederDetailsScreen extends StatefulWidget {
   const OrederDetailsScreen({super.key});
 
@@ -28,7 +30,7 @@ class _OrederDetailsScreenState extends State<OrederDetailsScreen> {
           ),
           Expanded(
             child: ListView.builder(
-              physics:const BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemCount: 4,
               padding: const EdgeInsets.all(0),
               itemBuilder: (context, index) {
@@ -36,7 +38,11 @@ class _OrederDetailsScreenState extends State<OrederDetailsScreen> {
               },
             ),
           ),
-          const AddButtonWidget()
+          AddButtonWidget(
+            onPressed: () {
+              Navigator.pushNamed(context, RouteList.loading);
+            },
+          )
         ],
       ),
     );
